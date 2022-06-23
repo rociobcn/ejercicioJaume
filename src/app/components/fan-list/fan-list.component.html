@@ -1,0 +1,30 @@
+<section>
+    <label>Add new Fan</label>
+    <input type="text" placeholder="Name" [(ngModel)]="fanName">
+    <input type="number" placeholder="Age" [(ngModel)]="fanAge">
+    <input type="text" placeholder="Name" [(ngModel)]="fanCountry">
+    <select name="team" [(ngModel)]="fanTeam">
+        <option value="barcelona">FC Barcelona</option>
+        <option value="rosario">Rosario Central</option>
+    </select>
+    <button (click)="addFan()">Añadir Fan</button>
+</section>
+
+<section class="box">
+    <div>
+        <h3>Rosario Fans</h3>
+        <div *ngFor="let fanCard of rosarioFans; let i = index">
+            <app-fan-card [fan]="fanCard" [index]="i" (fanDeleted)="deleteFan($event, 'rosario')" (change)="changeTeam($event, 'rosario')">
+            </app-fan-card>
+        
+        </div>
+    </div>
+    <div>
+        <h3>Barcelona Fans</h3>
+        <div *ngFor="let fanCard of barcelonaFans; let i = index">
+            <app-fan-card [fan]="fanCard" [index]="i" (fanDeleted)="deleteFan($event, 'barcelona')" (change)="changeTeam($event, 'barcelona')">
+            </app-fan-card>
+           
+        </div>
+    </div>
+</section>
